@@ -24,9 +24,9 @@
 				<key>Comment</key>
 				<string>ASUS Vivobook X1605VA (1043:1743)</string>
 				<key>Id</key>
-				<integer>199</integer>
+				<integer>26</integer>
 				<key>Path</key>
-				<string>layout199.xml.zlib</string>
+				<string>layout26.xml.zlib</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -299,9 +299,9 @@
 				<key>Comment</key>
 				<string>ASUS Vivobook X1605VA (1043:1743)</string>
 				<key>Id</key>
-				<integer>199</integer>
+				<integer>26</integer>
 				<key>Path</key>
-				<string>Platforms199.xml.zlib</string>
+				<string>Platforms26.xml.zlib</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
