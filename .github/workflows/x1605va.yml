@@ -1,0 +1,34 @@
+name: Build X1605VA AppleALC
+on:
+  push:
+    branches: [x1605va-mic]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PROJECT_TYPE: KEXT
+  JOB_TYPE: BUILD
+  ACID32: 1
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          repository: acidanthera/MacKernelSDK
+          path: MacKernelSDK
+      - name: Prepare dependencies
+        run: |
+          src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
+          src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
+      - name: Build x86_64 release
+        run: xcodebuild -jobs 1 -configuration Release -arch x86_64
+      - uses: actions/upload-artifact@v5
+        with:
+          name: AppleALC-X1605VA-layout26
+          path: build/*/*RELEASE.zip
+          if-no-files-found: error
