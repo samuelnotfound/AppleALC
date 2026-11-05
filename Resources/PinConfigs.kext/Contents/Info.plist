@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Copyright © 2017 vit9696. All rights reserved.</string>
+	<string>Copyright Â© 2017 vit9696. All rights reserved.</string>
 	<key>CFBundleIdentifier</key>
 	<string>as.vit9696.PinConfigs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -104,7 +104,7 @@
 					<key>AFGLowPowerState</key>
 					<data>AwAAAA==</data>
 					<key>Codec</key>
-					<string>Baio77 - ALC295 Lenovo_X1_Tablet_3°Gen</string>
+					<string>Baio77 - ALC295 Lenovo_X1_Tablet_3Â°Gen</string>
 					<key>CodecID</key>
 					<integer>283902613</integer>
 					<key>ConfigData</key>
@@ -1892,7 +1892,7 @@
 					<key>AFGLowPowerState</key>
 					<data>AwAAAA==</data>
 					<key>Codec</key>
-					<string>Armênio - Realtek ALC255/ALC3234 - Dell 7348</string>
+					<string>ArmÃªnio - Realtek ALC255/ALC3234 - Dell 7348</string>
 					<key>CodecID</key>
 					<integer>283902549</integer>
 					<key>ConfigData</key>
@@ -2266,6 +2266,33 @@
 				</dict>
 				<dict>
 					<key>AFGLowPowerState</key>
+					<data>
+					AwAAAA==
+					</data>
+					<key>Codec</key>
+					<string>ASUS Vivobook X1605VA (1043:1743)</string>
+					<key>CodecID</key>
+					<integer>283902550</integer>
+					<key>ConfigData</key>
+					<data>
+					AScc8AEnHQABJx4AAScfQAFHHCABRx0AAUceFwFHH5ABlxwwAZcdEAGXHosBlx8CAhcc
+					UAIXHRACFx4rAhcfAgE3HPABNx0AATceAAE3H0ABhxzwAYcdAAGHHgABhx9AAacc8AGn
+					HQABpx4AAacfQAEnHDABJx0BAScepgEnH5AB1xzwAdcdAAHXHgAB1x9AAecc8AHnHQAB
+					5x4AAecfQAFHDAIBJwcgAjN1AA==
+					</data>
+					<key>FuncGroup</key>
+					<integer>1</integer>
+					<key>LayoutID</key>
+					<integer>199</integer>
+					<key>WakeConfigData</key>
+					<data>
+					AUcMAgEnByACM3UA
+					</data>
+					<key>WakeVerbReinit</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>AFGLowPowerState</key>
 					<data>AwAAAA==</data>
 					<key>Codec</key>
 					<string>Rockjesus - Realtek ALC256 (3246) - dell 7559</string>
@@ -2556,7 +2583,7 @@
 					<key>AFGLowPowerState</key>
 					<data>AwAAAA==</data>
 					<key>Codec</key>
-					<string>Durian - Realtek ALC256 (3246) for MateBook X Pro 2019（4CH）</string>
+					<string>Durian - Realtek ALC256 (3246) for MateBook X Pro 2019ï¼ˆ4CHï¼‰</string>
 					<key>CodecID</key>
 					<integer>283902550</integer>
 					<key>ConfigData</key>
@@ -2646,7 +2673,7 @@
 					<key>AFGLowPowerState</key>
 					<data>AwAAAA==</data>
 					<key>Codec</key>
-					<string>Armênio - Realtek ALC257 - Lenovo T480</string>
+					<string>ArmÃªnio - Realtek ALC257 - Lenovo T480</string>
 					<key>CodecID</key>
 					<integer>283902551</integer>
 					<key>ConfigData</key>
@@ -10272,7 +10299,7 @@
 					<key>AFGLowPowerState</key>
 					<data>AwAAAA==</data>
 					<key>Codec</key>
-					<string>Lancet-X—Realtek ALC295/ALC3254 for HP OMEN 15-AX000</string>
+					<string>Lancet-Xâ€”Realtek ALC295/ALC3254 for HP OMEN 15-AX000</string>
 					<key>CodecID</key>
 					<integer>283902613</integer>
 					<key>ConfigData</key>
