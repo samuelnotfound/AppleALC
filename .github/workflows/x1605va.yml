@@ -1,7 +1,7 @@
-name: Build X1605VA AppleALC
+name: Build X1605VA AppleALC with Layout 26 Only
 on:
   push:
-    branches: [x1605va-mic]
+    branches: [x1605va-layout26-only]
   workflow_dispatch:
 
 permissions:
@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-15-intel
     steps:
       - uses: actions/checkout@v5
       - uses: actions/checkout@v5
@@ -25,10 +25,30 @@ jobs:
         run: |
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
+      - name: Keep only the X1605VA audio layout
+        run: python3 Tools/x1605va_layout_only.py
       - name: Build x86_64 release
         run: xcodebuild -jobs 1 -configuration Release -arch x86_64
+      - name: Verify and package AppleALC
+        run: |
+          kext=build/Release/AppleALC.kext
+          python3 - "$kext" <<'PY'
+          from pathlib import Path
+          import plistlib
+          import struct
+          import sys
+
+          contents = Path(sys.argv[1]) / "Contents"
+          info = plistlib.loads((contents / "Info.plist").read_bytes())
+          pins = info["IOKitPersonalities"]["as.vit9696.AppleALC"]["HDAConfigDefault"]
+          assert [(entry["CodecID"], entry["LayoutID"]) for entry in pins] == [(0x10EC0256, 26)]
+          data = (contents / "MacOS" / "AppleALC").read_bytes()
+          magic, cpu, _, filetype = struct.unpack_from("<4I", data)
+          assert (magic, cpu, filetype) == (0xFEEDFACF, 0x01000007, 0xB)
+          PY
+          ditto -c -k --keepParent "$kext" AppleALC-X1605VA-layout26-only.zip
       - uses: actions/upload-artifact@v5
         with:
-          name: AppleALC-X1605VA-layout26
-          path: build/*/*RELEASE.zip
+          name: AppleALC-X1605VA-layout26-only
+          path: AppleALC-X1605VA-layout26-only.zip
           if-no-files-found: error
