@@ -7,11 +7,6 @@ on:
 permissions:
   contents: read
 
-env:
-  PROJECT_TYPE: KEXT
-  JOB_TYPE: BUILD
-  ACID32: 1
-
 jobs:
   build:
     runs-on: macos-15-intel
@@ -21,14 +16,13 @@ jobs:
         with:
           repository: acidanthera/MacKernelSDK
           path: MacKernelSDK
-      - name: Prepare dependencies
+      - name: Prepare the Intel Lilu SDK
         run: |
-          src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
       - name: Keep only the X1605VA audio layout
         run: python3 Tools/x1605va_layout_only.py
       - name: Build x86_64 release
-        run: xcodebuild -jobs 1 -configuration Release -arch x86_64
+        run: xcodebuild -jobs 1 -configuration Release -arch x86_64 SYMROOT="$PWD/build"
       - name: Verify and package AppleALC
         run: |
           kext=build/Release/AppleALC.kext
